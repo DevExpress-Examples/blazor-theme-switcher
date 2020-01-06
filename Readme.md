@@ -8,19 +8,23 @@ This Theme Switcher offers the standard Bootstrap theme, [2 DevExpress Bootstrap
 
 *Files to look at*:
 
-| Server-Side Blazor | Client-Side Blazor |
-|---|---|
-| [ThemeSwitcher.razor](./CS/ServerSideBlazor/BlazorAppThemes/ThemeSwitcher/ThemeSwitcher.razor) | [ThemeSwitcher.razor](./CS/ClientSideBlazor/BlazorAppThemes/ThemeSwitcher/ThemeSwitcher.razor)
-| [MainLayout.razor](./CS/ServerSideBlazor/BlazorAppThemes/Shared/MainLayout.razor) | [MainLayout.razor](./CS/ClientSideBlazor/BlazorAppThemes/Shared/MainLayout.razor) 
-| [Index.razor](./CS/ServerSideBlazor/BlazorAppThemes/Pages/Index.razor) | [Index.razor](./CS/ClientSideBlazor/BlazorAppThemes/Pages/Index.razor) 
-| [site.css](./CS/ServerSideBlazor/BlazorAppThemes/wwwroot/css/site.css) | [site.css](./CS/ClientSideBlazor/BlazorAppThemes/wwwroot/css/site.css) 
-| [switcher-resources](./CS/ServerSideBlazor/BlazorAppThemes/wwwroot/css/switcher-resources) (folder) | [switcher-resources](./CS/ClientSideBlazor/BlazorAppThemes/wwwroot/css/switcher-resources) (folder)
-| [ThemeLink.razor](./CS/ServerSideBlazor/BlazorAppThemes/ThemeSwitcher/ThemeLink.razor) | 
-| [LinkService.cs](./CS/ServerSideBlazor/BlazorAppThemes/ThemeSwitcher/LinkService.cs) 
-| [Startup.cs](./CS/ServerSideBlazor/BlazorAppThemes/Startup.cs) | 
-| [_Host.cshtml](./CS/ServerSideBlazor/BlazorAppThemes/Pages/_Host.cshtml) | 
+**Server-Side Blazor**
+* [ThemeSwitcher.razor](./CS/ServerSideBlazor/BlazorAppThemes/ThemeSwitcher/ThemeSwitcher.razor)
+* [MainLayout.razor](./CS/ServerSideBlazor/BlazorAppThemes/Shared/MainLayout.razor)
+* [Index.razor](./CS/ServerSideBlazor/BlazorAppThemes/Pages/Index.razor)
+* [site.css](./CS/ServerSideBlazor/BlazorAppThemes/wwwroot/css/site.css)
+* [switcher-resources](./CS/ServerSideBlazor/BlazorAppThemes/wwwroot/css/switcher-resources) (folder)
+* [ThemeLink.razor](./CS/ServerSideBlazor/BlazorAppThemes/ThemeSwitcher/ThemeLink.razor) 
+* [LinkService.cs](./CS/ServerSideBlazor/BlazorAppThemes/ThemeSwitcher/LinkService.cs)
+* [Startup.cs](./CS/ServerSideBlazor/BlazorAppThemes/Startup.cs)
+* [_Host.cshtml](./CS/ServerSideBlazor/BlazorAppThemes/Pages/_Host.cshtml)
 
-
+**Client-Side Blazor**
+* [ThemeSwitcher.razor](./CS/ClientSideBlazor/BlazorAppThemes/ThemeSwitcher/ThemeSwitcher.razor)
+* [MainLayout.razor](./CS/ClientSideBlazor/BlazorAppThemes/Shared/MainLayout.razor) 
+* [Index.razor](./CS/ClientSideBlazor/BlazorAppThemes/Pages/Index.razor) 
+* [site.css](./CS/ClientSideBlazor/BlazorAppThemes/wwwroot/css/site.css) 
+* [switcher-resources](./CS/ClientSideBlazor/BlazorAppThemes/wwwroot/css/switcher-resources) (folder)
 
 
 
