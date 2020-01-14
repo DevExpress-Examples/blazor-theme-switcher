@@ -4,6 +4,8 @@ This example demonstrates how to create a Theme Switcher as in [DevExpress Blazo
 
 This Theme Switcher offers the standard Bootstrap theme, [2 DevExpress Bootstrap themes](https://github.com/DevExpress/bootstrap-themes), and [21 Bootstwatch themes](https://bootswatch.com/). 
 
+Refer to the [Themes](https://docs.devexpress.com/Blazor/401523/common-concepts/themes#implement-a-theme-switcher) documentation topic for more information.
+
 ![](images/blazor-theme-switcher.png)
 
 *Files to look at*:
