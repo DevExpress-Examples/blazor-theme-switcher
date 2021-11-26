@@ -6,6 +6,10 @@
     background: #5c2d91;
 }
 
+#settingsbar #themesMenu li > a > .image.blazing-dark {
+    background: #9b17e2;
+}
+
 #settingsbar #themesMenu li > a > .image.cerulean {
     background: #2fa4e7;
 }

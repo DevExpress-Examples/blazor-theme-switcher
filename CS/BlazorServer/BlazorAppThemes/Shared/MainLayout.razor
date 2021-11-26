@@ -1,29 +1,20 @@
 ﻿@inherits LayoutComponentBase
 
-<ThemeSwitcher>
-    <StylesheetLinkContainer>
-        <link href="_content/DevExpress.Blazor/dx-blazor.css" rel="stylesheet" />
-        <link href="@context.CurrentTheme" rel="stylesheet" />
-        <div class="main">
-            @context.ToggleButton
-            <div id="settingsbar" class="@(context.ThemeSelectorVisible ? "" : "hidden-settings-bar")">
-            @context.ThemeSelectorContainer
-        </div>
-            <div class="content px-4">
-                @Body
-            </div>
-        </div>
-    </StylesheetLinkContainer>
-    <ToggleButton>
-        <div align="right" class="theme-settings @context.ThemeSelectorVisible">
-            <a class="nav-item nav-link" @onclick="@context.ToggleThemeSelectorContainer" href="javascript:void(0);">
-                <span class="oi oi-cog"></span>
-            </a>
-        </div>
-    </ToggleButton>
-    <ThemeSelectorContainer>
-        <nav id="themesMenu">
-            @context.ThemeSelectorView
-        </nav>
-    </ThemeSelectorContainer>
-</ThemeSwitcher>
+<HeadContent>
+    <link href="_content/DevExpress.Blazor/dx-blazor.css" rel="stylesheet" />
+    <link href="@_activeTheme.StylesheetLinkUrl" rel="stylesheet" />
+       
+</HeadContent>
+ <div class="main">
+    <ThemeSwitcherToggleButton @bind-Active=@_themeSwitcherShown />
+    <div id="settingsbar" class="@(_themeSwitcherShown ? "" : "hidden-settings-bar")">
+    <ThemeSwitcherSideView @bind-ActiveTheme="@_activeTheme" @bind-Visible="@_themeSwitcherShown" />
+</div>
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+@code {
+    bool _themeSwitcherShown = false;
+    ThemeItem _activeTheme = ThemeItem.Default;
+}
