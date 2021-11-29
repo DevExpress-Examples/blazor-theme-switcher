@@ -1,4 +1,5 @@
 @inject IJSRuntime JSRuntime
+
 @if(Visible) {
     <nav id="themesMenu">
         <ul class="nav nav-pills">
@@ -19,6 +20,7 @@
         </ul>
     </nav>
 }
+
 @code {
     static readonly Dictionary<string, string[]> GroupedThemes = new () {
         ["Color Themes"] = new [] { "default" },

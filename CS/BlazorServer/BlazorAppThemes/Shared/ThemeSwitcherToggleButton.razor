@@ -7,7 +7,6 @@
 @code {
     [Parameter] public bool Active { get; set; }
     [Parameter] public EventCallback<bool> ActiveChanged { get; set; }
-
     async Task OnClick() {
         await ActiveChanged.InvokeAsync(!Active);
     }

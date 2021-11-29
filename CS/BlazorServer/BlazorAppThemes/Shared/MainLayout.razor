@@ -3,7 +3,6 @@
 <HeadContent>
     <link href="_content/DevExpress.Blazor/dx-blazor.css" rel="stylesheet" />
     <link href="@_activeTheme.StylesheetLinkUrl" rel="stylesheet" />
-       
 </HeadContent>
  <div class="main">
     <ThemeSwitcherToggleButton @bind-Active=@_themeSwitcherShown />
@@ -14,6 +13,7 @@
         @Body
     </div>
 </div>
+
 @code {
     bool _themeSwitcherShown = false;
     ThemeItem _activeTheme = ThemeItem.Default;
