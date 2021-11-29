@@ -17,7 +17,7 @@ Refer to the [Themes](https://docs.devexpress.com/Blazor/401523/common-concepts/
 ## Files to look at
 
 **Blazor Server**
-* [ThemeSwitcher.razor](./CS/BlazorServer/BlazorAppThemes/Shared/ThemeSwitcherSideView.razor)
+* [ThemeSwitcherSideView.razor](./CS/BlazorServer/BlazorAppThemes/Shared/ThemeSwitcherSideView.razor)
 * [ThemeItem.cs](./CS/BlazorServer/BlazorAppThemes/Shared/ThemeItem.cs)
 * [MainLayout.razor](./CS/BlazorServer/BlazorAppThemes/Shared/MainLayout.razor)
 * [Index.razor](./CS/BlazorServer/BlazorAppThemes/Pages/Index.razor)
