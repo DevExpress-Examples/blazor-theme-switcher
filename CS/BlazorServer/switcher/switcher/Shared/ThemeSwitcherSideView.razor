@@ -1,0 +1,54 @@
+﻿@inject IJSRuntime JSRuntime
+
+@if(Visible) {
+        <nav id="themesMenu">
+            <ul class="nav nav-pills">
+                @foreach (var themeSet in GroupedThemes) {
+                    <li class="nav-item theme-group">@themeSet.Key</li>
+                    @foreach (var theme in themeSet.Value) {
+                        <li class="nav-item">
+                            <a class="nav-link @(ActiveTheme.Name == theme ? "active" : "") "
+                                href="#"
+                                @onclick=@(async(e) => await OnItemClick(theme))
+                                @onclick:preventDefault>
+                                <span class="image @theme.ToLower().Replace(" ", "-")" aria-hidden="true"></span>
+                                <span class="theme-name">@theme</span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+    }
+
+@code {
+    static readonly Dictionary<string, string[]> GroupedThemes = new () {
+        ["Color Themes"] = new [] { "default" },
+        ["DevExpress Themes"] = new [] {
+            "blazing berry", "purple", "office white", "blazing dark"
+        },
+        ["Bootswatch Themes"] = new [] {
+            "cerulean", "cosmo", "cyborg", "darkly", "flatly", "journal", "litera",
+            "lumen", "lux", "materia", "minty", "pulse", "sandstone", "simplex", "sketchy", "slate",
+            "solar", "spacelab", "superhero", "united", "yeti"
+        }
+    };
+
+    [Parameter] public bool Visible { get; set; }
+    [Parameter] public EventCallback<bool> VisibleChanged { get; set; }
+    [Parameter] public ThemeItem ActiveTheme { get; set; }
+    [Parameter] public EventCallback<ThemeItem> ActiveThemeChanged { get; set; }
+    async Task OnItemClick(string theme) {
+        if (ActiveTheme.Name != theme) {
+            var themeItem = ThemeItem.Create(theme);
+            await JSRuntime.InvokeVoidAsync("fetch", themeItem.StylesheetLinkUrl, new {
+                method = "GET",
+                mode = "no-cors"
+            });
+            await Task.WhenAll(
+                ActiveThemeChanged.InvokeAsync(themeItem),
+                VisibleChanged.InvokeAsync(false)
+            );
+        }
+    }
+}

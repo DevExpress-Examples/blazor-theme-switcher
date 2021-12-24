@@ -1,0 +1,13 @@
+﻿<div align="right" class="theme-settings @Active">
+    <a class="nav-item nav-link" @onclick="@OnClick" @onclick:preventDefault href="#">
+        <span class="oi oi-cog"></span>
+    </a>
+</div>
+
+@code {
+    [Parameter] public bool Active { get; set; }
+    [Parameter] public EventCallback<bool> ActiveChanged { get; set; }
+    async Task OnClick() {
+        await ActiveChanged.InvokeAsync(!Active);
+    }
+}
