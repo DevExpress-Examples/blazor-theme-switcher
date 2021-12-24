@@ -1,0 +1,29 @@
+﻿.page {
+    height: 100%;
+    overflow: hidden;
+    background-color: inherit;
+}
+::deep .page-layout,
+::deep .page-layout > .dx-gridlayout-root,
+::deep .layout-item {
+    background-color: inherit;
+}
+
+::deep .content {
+    padding: 1.1rem 2rem 0 2rem;
+    overflow: auto;
+}
+
+@media (max-width: 1199.98px) {
+    ::deep .page-layout > .dx-gridlayout-root {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+}
+
+::deep .fit-width {
+    max-width: 100%;
+}
+
+::deep .mw-1100 {
+    max-width: 1100px;
+}
