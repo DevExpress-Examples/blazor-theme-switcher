@@ -3,6 +3,15 @@
 <HeadContent>
     <link href="_content/DevExpress.Blazor/dx-blazor.css" rel="stylesheet" />
     <link href="@_activeTheme.StylesheetLinkUrl" rel="stylesheet" />
+    @{if (_activeTheme.StylesheetLinkUrl.Contains("slate"))
+        {
+        <style>
+            .dxbs-gridview {
+                --selection-bg: rgba(255, 255, 255, 0.075) !important;
+            }
+        </style>
+        }
+    }
 </HeadContent>
  <div class="main">
     <ThemeSwitcherToggleButton @bind-Active=@_themeSwitcherShown />
