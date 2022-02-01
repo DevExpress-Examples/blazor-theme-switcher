@@ -2,17 +2,19 @@
 @using switcher.Data
 @inject WeatherForecastService ForecastService
     
-<DxDataGrid Data="@forecasts"
-            PageSize="5"
-            ShowFilterRow="false">
-    <DxDataGridCommandColumn Width="150px"></DxDataGridCommandColumn>
-    <DxDataGridColumn Field="@nameof(WeatherForecast.TemperatureC)" Caption="@("Temp. (\x2103)")" TextAlignment="@DataGridTextAlign.Right"></DxDataGridColumn>
-    <DxDataGridSpinEditColumn Field="@nameof(WeatherForecast.TemperatureF)" Caption="@("Temp. (\x2109)")"></DxDataGridSpinEditColumn>
-    <DxDataGridDateEditColumn Field="@nameof(WeatherForecast.Date)" DisplayFormat="D" EditorFormat="d"></DxDataGridDateEditColumn>
-</DxDataGrid>
+<DxGrid Data="@forecasts"
+        PageSize="5"
+        ShowFilterRow="false">
+    <Columns>
+        <DxGridCommandColumn Width="150px"></DxGridCommandColumn>
+        <DxGridDataColumn FieldName="@nameof(WeatherForecast.TemperatureC)" Caption="@("Temp. (\x2103)")" TextAlignment="@GridTextAlignment.Right"></DxGridDataColumn>
+        <DxGridDataColumn FieldName="@nameof(WeatherForecast.TemperatureF)" Caption="@("Temp. (\x2109)")"></DxGridDataColumn>
+        <DxGridDataColumn FieldName="@nameof(WeatherForecast.Date)" DisplayFormat="D"></DxGridDataColumn>
+    </Columns>
+</DxGrid>
 
 @code {
-    WeatherForecast[] forecasts;
+    object[] forecasts;
     protected override async Task OnInitializedAsync() {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     }

@@ -11,7 +11,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddDevExpressBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.Configure<DevExpress.Blazor.Configuration.GlobalOptions>(options => {
-    options.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v5;
+    options.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v4;
 });
 
 var app = builder.Build();
