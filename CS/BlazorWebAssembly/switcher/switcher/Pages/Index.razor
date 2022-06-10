@@ -15,13 +15,11 @@
 @code {
     private object forecasts;
 
-    protected override async Task OnInitializedAsync()
-    {
+    protected override async Task OnInitializedAsync() {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample_data/weather.json");
     }
 
-    public class WeatherForecast
-    {
+    public class WeatherForecast {
         public DateTime Date { get; set; }
 
         public int TemperatureC { get; set; }

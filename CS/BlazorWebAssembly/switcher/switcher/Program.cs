@@ -10,7 +10,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddDevExpressBlazor();
 
 builder.Services.Configure<DevExpress.Blazor.Configuration.GlobalOptions>(options => {
-    options.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v4;
+    options.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v5;
 });
 
 await builder.Build().RunAsync();
