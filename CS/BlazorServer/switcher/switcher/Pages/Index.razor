@@ -17,5 +17,6 @@
     object[] forecasts;
     protected override async Task OnInitializedAsync() {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        System.Threading.Thread.Sleep(3000);
     }
 }
