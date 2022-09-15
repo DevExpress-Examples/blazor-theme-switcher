@@ -17,18 +17,18 @@ Refer to the [Themes](https://docs.devexpress.com/Blazor/401523/common-concepts/
 ## Files to look at
 
 **Blazor Server**
-* [ThemeSwitcherSideView.razor](./CS/BlazorServer/BlazorAppThemes/Shared/ThemeSwitcherSideView.razor)
-* [ThemeItem.cs](./CS/BlazorServer/BlazorAppThemes/Shared/ThemeItem.cs)
-* [MainLayout.razor](./CS/BlazorServer/BlazorAppThemes/Shared/MainLayout.razor)
-* [Index.razor](./CS/BlazorServer/BlazorAppThemes/Pages/Index.razor)
-* [switcher-resources](./CS/BlazorServer/BlazorAppThemes/wwwroot/css/switcher-resources) (folder)
+* [ThemeSwitcherSideView.razor](./CS/BlazorServer/switcher/switcher/Shared/ThemeSwitcherSideView.razor)
+* [ThemeItem.cs](./CS/BlazorServer/switcher/switcher/Shared/ThemeItem.cs)
+* [MainLayout.razor](./CS/BlazorServer/switcher/switcher/Shared/MainLayout.razor)
+* [Index.razor](./CS/BlazorServer/switcher/switcher/Pages/Index.razor)
+* [switcher-resources](./CS/BlazorServer/switcher/switcher/wwwroot/css/switcher-resources) (folder)
 
 **Blazor WebAssembly**
-* [ThemeSwitcherSideView.razor](./CS/BlazorWebAssembly/BlazorAppThemes/Shared/ThemeSwitcherSideView.razor)
-* [ThemeItem.cs](./CS/BlazorWebAssembly/BlazorAppThemes/Shared/ThemeItem.cs)
-* [MainLayout.razor](./CS/BlazorWebAssembly/BlazorAppThemes/Shared/MainLayout.razor) 
-* [Index.razor](./CS/BlazorWebAssembly/BlazorAppThemes/Pages/Index.razor)  
-* [switcher-resources](./CS/BlazorWebAssembly/BlazorAppThemes/wwwroot/css/switcher-resources) (folder)
+* [ThemeSwitcherSideView.razor](./CS/BlazorWebAssembly/switcher/switcher/Shared/ThemeSwitcherSideView.razor)
+* [ThemeItem.cs](./CS/BlazorWebAssembly/switcher/switcher/Shared/ThemeItem.cs)
+* [MainLayout.razor](./CS/BlazorWebAssembly/switcher/switcher/Shared/MainLayout.razor) 
+* [Index.razor](./CS/BlazorWebAssembly/switcher/switcher/Pages/Index.razor)  
+* [switcher-resources](./CS/BlazorWebAssembly/switcher/switcher/wwwroot/css/switcher-resources) (folder)
 <!-- default file list -->
 
 ## Documentation
