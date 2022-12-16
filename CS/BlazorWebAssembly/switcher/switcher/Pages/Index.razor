@@ -3,9 +3,10 @@
 
 <DxGrid Data="@forecasts"
         PageSize="5"
-        ShowFilterRow="false">
+        ShowFilterRow="false"
+        @bind-SelectedDataItems="@SelectedDataItems">
     <Columns>
-        <DxGridCommandColumn Width="150px"></DxGridCommandColumn>
+        <DxGridSelectionColumn />
         <DxGridDataColumn FieldName="@nameof(WeatherForecast.TemperatureC)" Caption="@("Temp. (\x2103)")" TextAlignment="@GridTextAlignment.Right"></DxGridDataColumn>
         <DxGridDataColumn FieldName="@nameof(WeatherForecast.TemperatureF)" Caption="@("Temp. (\x2109)")"></DxGridDataColumn>
         <DxGridDataColumn FieldName="@nameof(WeatherForecast.Date)" DisplayFormat="D"></DxGridDataColumn>
@@ -13,15 +14,16 @@
 </DxGrid>
 
 @code {
-    private object forecasts;
+    WeatherForecast[] forecasts;
+    IReadOnlyList<object> SelectedDataItems { get; set; }
 
     protected override async Task OnInitializedAsync() {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample_data/weather.json");
+        SelectedDataItems = forecasts.Where(f => f.Date == new DateTime(2018, 5, 6)).ToList();
     }
 
     public class WeatherForecast {
         public DateTime Date { get; set; }
-
         public int TemperatureC { get; set; }
         public string? Summary { get; set; }
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);

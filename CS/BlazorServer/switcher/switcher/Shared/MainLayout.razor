@@ -1,16 +1,8 @@
 ﻿@inherits LayoutComponentBase
-    
+   
 <HeadContent>
     @foreach(var item in _activeTheme.StylesheetLinkUrl) {
         <link href="@item" rel="stylesheet" />
-    }
-    @{if(_activeTheme.StylesheetLinkUrl.Contains("slate")) {
-          <style>
-            .dxbs-gridview {
-                --selection-bg: rgba(255, 255, 255, 0.075) !important;
-            }
-        </style>
-      }
     }
 </HeadContent>
 <div class="main">

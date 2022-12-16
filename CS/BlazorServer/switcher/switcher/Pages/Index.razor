@@ -4,9 +4,10 @@
     
 <DxGrid Data="@forecasts"
         PageSize="5"
-        ShowFilterRow="false">
+        ShowFilterRow="false"
+        @bind-SelectedDataItems="@SelectedDataItems">
     <Columns>
-        <DxGridCommandColumn Width="150px"></DxGridCommandColumn>
+        <DxGridSelectionColumn />
         <DxGridDataColumn FieldName="@nameof(WeatherForecast.TemperatureC)" Caption="@("Temp. (\x2103)")" TextAlignment="@GridTextAlignment.Right"></DxGridDataColumn>
         <DxGridDataColumn FieldName="@nameof(WeatherForecast.TemperatureF)" Caption="@("Temp. (\x2109)")"></DxGridDataColumn>
         <DxGridDataColumn FieldName="@nameof(WeatherForecast.Date)" DisplayFormat="D"></DxGridDataColumn>
@@ -14,9 +15,12 @@
 </DxGrid>
 
 @code {
-    object[] forecasts;
+    WeatherForecast[] forecasts;
+    IReadOnlyList<object> SelectedDataItems { get; set; }
+
     protected override async Task OnInitializedAsync() {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Today);
+        SelectedDataItems = forecasts.Where(f => f.Date == DateTime.Today.AddDays(1)).ToList();       
         System.Threading.Thread.Sleep(3000);
     }
 }
