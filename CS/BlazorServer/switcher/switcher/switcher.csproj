@@ -10,6 +10,6 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Blazor" Version="22.1.2-beta" />
+    <PackageReference Include="DevExpress.Blazor" Version="22.2.3" />
   </ItemGroup>
 </Project>
