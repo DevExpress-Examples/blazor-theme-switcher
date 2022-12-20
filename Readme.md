@@ -5,27 +5,27 @@
 <!-- default badges end -->
 # How to implement a Theme Switcher in Blazor applications
 
-This example demonstrates how to create a Theme Switcher as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/) and apply the selected theme to an application at runtime. The Theme Switcher includes the standard Bootstrap theme, [DevExpress built-in themes](https://github.com/DevExpress/bootstrap-themes), and [free Bootstwatch themes](https://bootswatch.com/).
+This example demonstrates how to create a Theme Switcher as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/) and apply the selected theme to an application at runtime. The Theme Switcher includes the standard Bootstrap theme, [DevExpress built-in themes](https://github.com/DevExpress/bootstrap-themes), and [free Bootswatch themes](https://bootswatch.com/).
 
 ![Blazor - Theme Switcher](images/blazor-theme-switcher.png)
 
-The example includes solutions both for Blazor Server and Blazor Web Assembly. Note that these solutions target .NET 6.0.
+The example includes solutions both for Blazor Server and Blazor WebAssembly hosting models. Note that these solutions target .NET 6.0.
 
 ## Overview
 
 Follow the steps below to implement a Theme Switcher in your application:
 
-1. Use a [DevExpress Project Template](https://docs.devexpress.com/Blazor/401057/get-started) to create a new Blazor Server or Blazor Web Assembly application.
+1. Use a [DevExpress Project Template](https://docs.devexpress.com/Blazor/401057/get-started) to create a new Blazor Server or Blazor WebAssembly application.
 
 2. Copy this example's [switcher-resources](https://github.com/DevExpress-Examples/blazor-theme-switcher/tree/22.2.3%2B/CS/BlazorServer/switcher/switcher/wwwroot/css/switcher-resources) folder to your application's *wwwroot/css* folder. The *switcher-resources* folder has the following structure:
 
-    * The *themes* folder includes nested folders whose names correspond to theme names. Each nested folder stores the theme's stylesheet (the *bootstrap.min.css* file).
+    * The *themes* folder includes nested folders whose names correspond to Bootstrap theme names. Each nested folder stores a Bootstrap theme's stylesheet (the *bootstrap.min.css* file).
     * The *themes.css* file contains CSS rules used to draw colored squares for each theme in the Theme Switcher.
     * The *theme-switcher.css* file contains CSS rules that define the Theme Switcher's settings and behavior.
 
     ![Theme Switcher Resources](images/blazor-theme-switcher-resources.png)
 
-3. Link the *themes.css* and *theme-switcher.css* files in the *site.css* file (for Blazor Server) or *app.css* (for Blazor Web Assembly):
+3. Link the *themes.css* and *theme-switcher.css* files in the *site.css* (for Blazor Server) or *app.css* (for Blazor WebAssembly) file:
 
     ```CSS
     @import url('switcher-resources/themes.css');
@@ -63,9 +63,9 @@ Follow the steps below to implement a Theme Switcher in your application:
 
 6. Create a new *ThemeSwitcherSideView.razor* component in the *Shared* folder. In this file, declare the following:
    
-    * Variables that specify the theme selector panel's visibility (`Visible`) and the current theme's URL (`ActiveTheme`).
+    * Variables that specify the theme selector panel's visibility (`Visible`) and the current theme (`ActiveTheme`).
     * Event callbacks (`VisibleChanged` and `ActiveThemeChanged`) that update the state of the parent component after you select another theme. Refer to the Microsoft documentation for more information: [Binding with Component Parameters](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/data-binding#binding-with-component-parameters).
-    * A theme collection that stores all themes available in the switcher (`GroupedThemes`).
+    * A theme collection that stores all themes available in the Theme Switcher (`GroupedThemes`).
    
     ```razor
     @* ... *@
@@ -88,7 +88,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     }
     ```
 
-7. To display icons for available themes, add the sidebar's layout into the *ThemeSwitcherSideView.razor* file:
+7. To display icons for each theme in the Theme Switcher, add the sidebar's layout into the *ThemeSwitcherSideView.razor* file:
 
     ```razor
     @if (Visible) {
@@ -159,7 +159,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     }
     ```
 
-10. Define the Theme Switcher UI in the *MainLayout.razor* file. The Theme Switcher component uses two-way binding to bind the `ActiveTheme` property of the **ThemeSwitcherSideView** component to the active theme. Use the `@key` directive attribute to guarantee preservation of elements or components based on the key's value.
+10. Define the Theme Switcher UI in the *MainLayout.razor* file. Use two-way binding to bind the `ActiveTheme` property of the **ThemeSwitcherSideView** component to the active theme. The `@key` directive attribute allows you to guarantee preservation of elements or components based on the key's value.
     
     ```razor
     @inherits LayoutComponentBase
@@ -185,7 +185,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     }
     ```
 
-11. Remove the default theme's stylesheet (`<link href="_content/DevExpress.Blazor.Themes/{your-default-theme-name}.bs5.css" rel="stylesheet" />`) from the `<head>` section of the *Pages/_Layout.cshtml* file (for Blazor Server) or the *wwwroot/index.html* file (for Blazor Web Assembly).
+11. Remove the default theme's stylesheet (`<link href="_content/DevExpress.Blazor.Themes/{your-default-theme-name}.bs5.css" rel="stylesheet" />`) from the `<head>` section of the *Pages/_Layout.cshtml* (for Blazor Server) or *wwwroot/index.html* (for Blazor WebAssembly) file.
 
 12. Open the *Index.razor* file and add the [DxGrid](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid) component:
     
@@ -219,7 +219,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     
     ```
 
-The example code relies on the `HeadOutlet` component. Refer to the following Microsoft article for more information: [HeadOutlet Component](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/control-head-content#headoutlet-component).
+This example uses the `HeadOutlet` component. Refer to the following Microsoft article for more information: [HeadOutlet Component](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/control-head-content#headoutlet-component).
 
 <!-- default file list -->
 ## Files to Review
@@ -231,7 +231,7 @@ The example code relies on the `HeadOutlet` component. Refer to the following Mi
 * [Index.razor](./CS/BlazorServer/switcher/switcher/Pages/Index.razor)
 * [switcher-resources](./CS/BlazorServer/switcher/switcher/wwwroot/css/switcher-resources) (folder)
 
-**Blazor Web Assembly**
+**Blazor WebAssembly**
 * [ThemeSwitcherSideView.razor](./CS/BlazorWeb Assembly/switcher/switcher/Shared/ThemeSwitcherSideView.razor)
 * [ThemeItem.cs](./CS/BlazorWeb Assembly/switcher/switcher/Shared/ThemeItem.cs)
 * [MainLayout.razor](./CS/BlazorWeb Assembly/switcher/switcher/Shared/MainLayout.razor) 
