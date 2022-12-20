@@ -25,7 +25,7 @@ Follow the steps below to implement a Theme Switcher in your application:
 
     ![Theme Switcher Resources](images/blazor-theme-switcher-resources.png)
 
-3. Link the *themes.css* and *theme-switcher.css* files in the *site.css* (for Blazor Server) or *app.css* (for Blazor WebAssembly) file:
+3. Link the *themes.css* and *theme-switcher.css* files in the *site.css* file (for Blazor Server) or the *app.css* file (for Blazor WebAssembly):
 
     ```CSS
     @import url('switcher-resources/themes.css');
@@ -61,9 +61,9 @@ Follow the steps below to implement a Theme Switcher in your application:
     
     ```
 
-6. Create a new *ThemeSwitcherSideView.razor* component in the *Shared* folder. In this file, declare the following:
+6. Create the *ThemeSwitcherSideView.razor* component in the *Shared* folder. In the component file, declare the following:
    
-    * Variables that specify the theme selector panel's visibility (`Visible`) and the current theme (`ActiveTheme`).
+    * Variables that specify the visibility of the theme selector panel (`Visible`) and the current theme (`ActiveTheme`).
     * Event callbacks (`VisibleChanged` and `ActiveThemeChanged`) that update the state of the parent component after you select another theme. Refer to the Microsoft documentation for more information: [Binding with Component Parameters](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/data-binding#binding-with-component-parameters).
     * A theme collection that stores all themes available in the Theme Switcher (`GroupedThemes`).
    
@@ -141,7 +141,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     }
     ```
 
-9. Create the *ThemeSwitcherToggleButton.razor* component in the *Shared* folder. In the component file, declare the `Active` variable and `ActiveChanged` event callback to allow data binding. Add the toggle button's HTML markup that reflects the `Active` variable's value and invokes the `ActiveChanged` event callback when you click the button.
+9. Create the *ThemeSwitcherToggleButton.razor* component in the *Shared* folder. In the component file, declare the `Active` variable and `ActiveChanged` event callback to allow data binding. Add the toggle button's HTML markup that reflects the `Active` variable's value and invokes the `ActiveChanged` event callback after you click the button.
    
     ```razor
     <div align="right" class="theme-settings @Active">
@@ -185,7 +185,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     }
     ```
 
-11. Remove the default theme's stylesheet (`<link href="_content/DevExpress.Blazor.Themes/{your-default-theme-name}.bs5.css" rel="stylesheet" />`) from the `<head>` section of the *Pages/_Layout.cshtml* (for Blazor Server) or *wwwroot/index.html* (for Blazor WebAssembly) file.
+11. Remove the default theme's stylesheet (`<link href="_content/DevExpress.Blazor.Themes/{your-default-theme-name}.bs5.css" rel="stylesheet" />`) from the `<head>` section of the *Pages/_Layout.cshtml* file (for Blazor Server) or the *wwwroot/index.html* file (for Blazor WebAssembly).
 
 12. Open the *Index.razor* file and add the [DxGrid](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid) component:
     
