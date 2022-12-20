@@ -23,8 +23,6 @@ Follow the steps below to implement a Theme Switcher in your application:
     * The *themes.css* file contains CSS rules used to draw colored squares for each theme in the Theme Switcher.
     * The *theme-switcher.css* file contains CSS rules that define the Theme Switcher's settings and behavior.
 
-    ![Theme Switcher Resources](images/blazor-theme-switcher-resources.png)
-
 3. Link the *themes.css* and *theme-switcher.css* files in the *site.css* file (for Blazor Server) or the *app.css* file (for Blazor WebAssembly):
 
     ```CSS
@@ -71,14 +69,11 @@ Follow the steps below to implement a Theme Switcher in your application:
     @* ... *@
     @code {
         static readonly Dictionary<string, string[]> GroupedThemes = new() {
-                ["Color Themes"] = new[] { "default" },
-                ["DevExpress Themes"] = Utils.DevExpressThemes,
-                ["Bootswatch Themes"] = new[] {
-                "cerulean", "cosmo", "cyborg", "darkly", "flatly", "journal", "litera",
-                "lumen", "lux", "materia", "minty", "pulse", "sandstone", "simplex", "sketchy", "slate",
-                "solar", "spacelab", "superhero", "united", "yeti"
+            ["DevExpress Themes"] = Utils.DevExpressThemes,
+            ["Bootstrap Themes"] = new[] {
+                "default", "cerulean", "cyborg", "flatly", "journal", "litera", "lumen", "lux", "pulse", "simplex", "solar", "superhero", "united", "yeti"
             }
-            };
+        };
      
         [Parameter] public bool Visible { get; set; }
         [Parameter] public EventCallback<bool> VisibleChanged { get; set; }
