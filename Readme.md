@@ -232,11 +232,11 @@ This example uses the `HeadOutlet` component. Refer to the following Microsoft a
 * [switcher-resources](./CS/BlazorServer/switcher/switcher/wwwroot/css/switcher-resources) (folder)
 
 **Blazor WebAssembly**
-* [ThemeSwitcherSideView.razor](./CS/BlazorWeb Assembly/switcher/switcher/Shared/ThemeSwitcherSideView.razor)
-* [ThemeItem.cs](./CS/BlazorWeb Assembly/switcher/switcher/Shared/ThemeItem.cs)
-* [MainLayout.razor](./CS/BlazorWeb Assembly/switcher/switcher/Shared/MainLayout.razor) 
-* [Index.razor](./CS/BlazorWeb Assembly/switcher/switcher/Pages/Index.razor)  
-* [switcher-resources](./CS/BlazorWeb Assembly/switcher/switcher/wwwroot/css/switcher-resources) (folder)
+* [ThemeSwitcherSideView.razor](./CS/BlazorWebAssembly/switcher/switcher/Shared/ThemeSwitcherSideView.razor)
+* [ThemeItem.cs](./CS/BlazorWebAssembly/switcher/switcher/Shared/ThemeItem.cs)
+* [MainLayout.razor](./CS/BlazorWebAssembly/switcher/switcher/Shared/MainLayout.razor) 
+* [Index.razor](./CS/BlazorWebAssembly/switcher/switcher/Pages/Index.razor)  
+* [switcher-resources](./CS/BlazorWebAssembly/switcher/switcher/wwwroot/css/switcher-resources) (folder)
 <!-- default file list -->
 
 ## Documentation
