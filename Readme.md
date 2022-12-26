@@ -5,7 +5,8 @@
 <!-- default badges end -->
 # How to implement a Theme Switcher in Blazor applications
 
-This example demonstrates how to create a Theme Switcher as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/) and apply the selected theme to an application at runtime. The Theme Switcher includes the standard Bootstrap theme, [DevExpress built-in themes](https://github.com/DevExpress/bootstrap-themes), and [free Bootswatch themes](https://bootswatch.com/).
+This example demonstrates how you can add a Theme Switcher to your application. The switcher in this example is the same as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/). The choices will include [DevExpress built-in themes](https://github.com/DevExpress/bootstrap-themes) and Bootstrap themes (the default theme and [free Bootswatch options](https://bootswatch.com/)).
+
 
 ![Blazor - Theme Switcher](images/blazor-theme-switcher.png)
 
