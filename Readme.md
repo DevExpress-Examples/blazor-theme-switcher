@@ -142,7 +142,7 @@ Follow the steps below to implement a Theme Switcher in your application:
    
     ```razor
     <div align="right" class="theme-settings @Active">
-        <a class="nav-item nav-link" @onclick="@OnClick" @onclick:preventDefault href="#">
+        <a class="nav-item nav-link" @onclick="@OnClick" @onclick:preventDefault>
             <span class="oi oi-cog"></span>
         </a>
     </div>
