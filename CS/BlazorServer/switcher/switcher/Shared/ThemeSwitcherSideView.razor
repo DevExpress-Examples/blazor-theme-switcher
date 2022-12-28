@@ -23,14 +23,11 @@
 
 @code {
     static readonly Dictionary<string, string[]> GroupedThemes = new() {
-            ["Color Themes"] = new[] { "default" },
-            ["DevExpress Themes"] = Utils.DevExpressThemes,
-            ["Bootswatch Themes"] = new[] {
-            "cerulean", "cosmo", "cyborg", "darkly", "flatly", "journal", "litera",
-            "lumen", "lux", "materia", "minty", "pulse", "sandstone", "simplex", "sketchy", "slate",
-            "solar", "spacelab", "superhero", "united", "yeti"
+        ["DevExpress Themes"] = Utils.DevExpressThemes,
+        ["Bootstrap Themes"] = new[] {
+            "default", "cerulean", "cyborg", "flatly", "journal", "litera", "lumen", "lux", "pulse", "simplex", "solar", "superhero", "united", "yeti"
         }
-        };
+    };
 
     [Parameter] public bool Visible { get; set; }
     [Parameter] public EventCallback<bool> VisibleChanged { get; set; }
