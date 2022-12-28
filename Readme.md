@@ -10,7 +10,7 @@ This example demonstrates how you can add a Theme Switcher to your application. 
 
 ![Blazor - Theme Switcher](images/blazor-theme-switcher.png)
 
-The example includes solutions both for Blazor Server and Blazor WebAssembly hosting models. Note that these solutions target .NET 6.0.
+The example includes solutions for both Blazor Server and Blazor WebAssembly hosting models. Note that these solutions target .NET 6.0.
 
 ## Overview
 
@@ -84,7 +84,8 @@ Follow the steps below to implement a Theme Switcher in your application:
     }
     ```
 
-7. To display icons for each theme in the Theme Switcher, add the sidebar's layout into the *ThemeSwitcherSideView.razor* file:
+7. To display icons for each theme in the Theme Switcher, add the sidebar's layout to the *ThemeSwitcherSideView.razor* file:
+
 
     ```razor
     @if (Visible) {
@@ -215,7 +216,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     
     ```
 
-This example uses the `HeadOutlet` component. Refer to the following Microsoft article for more information: [HeadOutlet Component](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/control-head-content#headoutlet-component).
+This example uses the `HeadOutlet` component. Refer to the following section of the **Control <head> content in ASP.NET Core Blazor apps** Microsoft article for more information: [HeadOutlet component](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/control-head-content#headoutlet-component).
 
 <!-- default file list -->
 ## Files to Review
