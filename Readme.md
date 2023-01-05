@@ -234,7 +234,7 @@ This example uses the `HeadOutlet` component. Refer to the following section of 
 * [MainLayout.razor](./CS/BlazorWebAssembly/switcher/switcher/Shared/MainLayout.razor) 
 * [Index.razor](./CS/BlazorWebAssembly/switcher/switcher/Pages/Index.razor)  
 * [switcher-resources](./CS/BlazorWebAssembly/switcher/switcher/wwwroot/css/switcher-resources) (folder)
-<!-- default file list -->
+<!-- default file list end -->
 
 ## Documentation
 
