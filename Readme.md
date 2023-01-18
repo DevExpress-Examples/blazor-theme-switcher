@@ -214,7 +214,7 @@ Follow the steps below to implement a Theme Switcher in your application:
     }
     ```
 
-This example(test) uses the `HeadOutlet` component. Refer to the following section of the **Control <head> content in ASP.NET Core Blazor apps** Microsoft article for more information: [HeadOutlet component](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/control-head-content#headoutlet-component).
+This example uses the `HeadOutlet` component. Refer to the following section of the **Control <head> content in ASP.NET Core Blazor apps** Microsoft article for more information: [HeadOutlet component](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/control-head-content#headoutlet-component).
 
 <!-- default file list -->
 ## Files to Review
