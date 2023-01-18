@@ -14,6 +14,7 @@ The example includes solutions for both Blazor Server and Blazor WebAssembly hos
 
 ## Overview
 
+
 Follow the steps below to implement a Theme Switcher in your application:
 
 1. Use a [DevExpress Project Template](https://docs.devexpress.com/Blazor/401057/get-started) to create a new Blazor Server or Blazor WebAssembly application.
