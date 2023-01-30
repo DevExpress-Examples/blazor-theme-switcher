@@ -21,7 +21,7 @@ Follow the steps below to implement a Theme Switcher in your application:
 
 2. Copy this example's [switcher-resources](https://github.com/DevExpress-Examples/blazor-theme-switcher/tree/22.2.3%2B/CS/BlazorServer/switcher/switcher/wwwroot/css/switcher-resources) folder to your application's *wwwroot/css* folder. The *switcher-resources* folder has the following structure:
 
-    * The *themes* folder includes nested folders whose names correspond to Bootstrap theme names. Each nested folder stores a Bootstrap theme's stylesheet (the *bootstrap.min.css* file).
+    * The *themes* folder includes nested folders whose names correspond to external Bootstrap themes. Each nested folder stores a Bootstrap theme's stylesheet (the *bootstrap.min.css* file). Note that built-in DevExpress themes are distributed with the **DevExpress.Blazor.Themes** package.
     * The *themes.css* file contains CSS rules used to draw colored squares for each theme in the Theme Switcher.
     * The *theme-switcher.css* file contains CSS rules that define the Theme Switcher's settings and behavior.
 
