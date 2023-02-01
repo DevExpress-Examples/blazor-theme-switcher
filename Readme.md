@@ -4,7 +4,7 @@
 <!-- default badges end -->
 # How to implement a Theme Switcher in Blazor applications
 
-This example demonstrates how you can add a Theme Switcher to your application. The switcher in this example is the same as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/). The choices will include [DevExpress built-in themes](https://docs.devexpress.com/Blazor/401523/common-concepts/customize-appearance/themes) and external Bootstrap themes (the default theme and [free Bootswatch options](https://bootswatch.com/)).
+This example demonstrates how you can add a Theme Switcher to your application. The switcher in this example is the same as in the [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/). You can switch between [DevExpress built-in themes](https://docs.devexpress.com/Blazor/401523/common-concepts/customize-appearance/themes) and external Bootstrap themes (the default theme and [free Bootswatch options](https://bootswatch.com/)).
 
 
 ![Blazor - Theme Switcher](images/blazor-theme-switcher.png)
@@ -20,7 +20,7 @@ Follow the steps below to implement a Theme Switcher in your application:
 
 2. Copy this example's [switcher-resources](https://github.com/DevExpress-Examples/blazor-theme-switcher/tree/22.2.3%2B/CS/BlazorServer/switcher/switcher/wwwroot/css/switcher-resources) folder to your application's *wwwroot/css* folder. The *switcher-resources* folder has the following structure:
 
-    * The *themes* folder includes nested folders whose names correspond to external Bootstrap themes. Each nested folder stores an external theme's stylesheet (the *bootstrap.min.css* file). Note that built-in DevExpress themes are stored separately in the **DevExpress.Blazor.Themes** NuGet package, which was installed to the application on the previous step.
+    * The *themes* folder includes nested folders whose names correspond to external Bootstrap themes. Each nested folder stores an external theme's stylesheet (the *bootstrap.min.css* file). Note that built-in DevExpress themes are stored separately in the **DevExpress.Blazor.Themes** NuGet package, which was installed to the application in the previous step.
 
     * The *themes.css* file contains CSS rules used to draw colored squares for each theme in the Theme Switcher.
     * The *theme-switcher.css* file contains CSS rules that define the Theme Switcher's settings and behavior.
