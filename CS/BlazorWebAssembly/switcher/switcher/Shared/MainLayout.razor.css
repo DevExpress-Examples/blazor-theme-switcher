@@ -4,9 +4,9 @@
     background-color: inherit;
 }
 ::deep .page-layout,
-::deep .page-layout > .dx-gridlayout-root,
+::deep .page-layout > .dxbl-gridlayout-root,
 ::deep .layout-item {
-    background-color: inherit;
+    background-color: var(--bs-body-bg, var(--dxbl-body-bg, #fff));
 }
 
 ::deep .content {
@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 1199.98px) {
-    ::deep .page-layout > .dx-gridlayout-root {
+    ::deep .page-layout > .dxbl-gridlayout-root {
         grid-template-columns: minmax(0, 1fr) !important;
     }
 }
