@@ -5,17 +5,17 @@
 <!-- default badges end -->
 # How to implement a Theme Switcher in Blazor applications
 
-This example demonstrates how you can add a Theme Switcher to your application. The switcher in this example is the same as in the [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/). The Theme Switcher component allows users to switch between [DevExpress built-in themes](https://docs.devexpress.com/Blazor/401523/common-concepts/customize-appearance/themes) and external Bootstrap themes (the default theme and [free Bootswatch options](https://bootswatch.com/)).
+This example demonstrates how you can add a Theme Switcher to your application. The switcher in this example is the same as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/). It allows users to switch between [DevExpress built-in themes](https://docs.devexpress.com/Blazor/401523/common-concepts/customize-appearance/themes) and external Bootstrap themes (the default theme and [free Bootswatch options](https://bootswatch.com/)).
 
 ![Blazor - Theme Switcher](images/blazor-theme-switcher.png)
 
-The example's solution targets .NET 8, but you can also integrate the Theme Switcher in projects that target .NET 6 and .NET 7.
+The example's solution targets .NET 8, but you can also integrate this Theme Switcher in projects that target .NET 6 and .NET 7.
 
-## Add the Theme Switcher to an Application
+## Add a Theme Switcher to an Application
 
 Follow the steps below to add a Theme Switcher into your application:
 
-1. Copy this example's [ThemeSwitcher](./CS/switcher/switcher/ThemeSwitcher) folder to your application.
+1. Copy this example's [ThemeSwitcher](./CS/switcher/switcher/ThemeSwitcher) folder to your project.
 2. In the *_Imports.razor* file, import the `switcher.ThemeSwitcher` namespace and files located in the *ThemeSwitcher* folder:
 
     ```cs
@@ -60,13 +60,13 @@ Follow the steps below to add a Theme Switcher into your application:
     ```razor
     <ThemeSwitcher />
     ``` 
-8. *For .NET 6 and .NET 7 applications.* Remove the `@rendermode InteractiveServer` directive from the [ThemeSwitcher.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcher.razor#L2), [ThemeSwitcherContainer.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherContainer.razor#L4), and [ThemeSwitcherItem.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherItem.razor#L2) files. 
+8. *For .NET 6 and .NET 7 applications.* Remove the `@rendermode InteractiveServer` directive from [ThemeSwitcher.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcher.razor#L2), [ThemeSwitcherContainer.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherContainer.razor#L4), and [ThemeSwitcherItem.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherItem.razor#L2) files. 
 
 ## Add Themes to the Theme Switcher
 
-Follow the steps below to add a Bootstrap theme to the Theme Switcher:
+Follow the steps below to add an external Bootstrap theme to the Theme Switcher:
 
-1. In the **wwwroot/css/themes** folder, create a new folder for your theme. The folder and theme names should match.
+1. In the **wwwroot/css/themes** folder, create a new folder for this theme. The folder and theme names should match.
 
 2. Add the theme's stylesheet (the *bootstrap.min.css* file) to the newly created folder.
 
@@ -74,7 +74,7 @@ Follow the steps below to add a Bootstrap theme to the Theme Switcher:
 
     ```css
     .blazor-themes a.<your-theme-name>:before {
-        background: <your-theme-color>;
+        background: <theme-main-color>;
     }
     ```
 
@@ -91,7 +91,7 @@ Follow the steps below to add a Bootstrap theme to the Theme Switcher:
 
 ## Remove Themes from the Theme Switcher
 
-Follow the steps below to remove a DevExpress or Bootstrap theme from the Theme Switcher:
+Follow the steps below to remove a built-in DevExpress or external Bootstrap theme from the Theme Switcher:
 
 1. Open the *ThemeService.cs* file and remove the theme name from the **DevExpress Themes** or **Bootstrap Themes** theme set:
 
@@ -104,15 +104,15 @@ Follow the steps below to remove a DevExpress or Bootstrap theme from the Theme 
     }
     ```
 
-2. Remove the CSS rule that corresponds to the theme from the *wwwroot/css/themes.css* file.
+2. Remove the CSS rule that corresponds to this theme from the *wwwroot/css/themes.css* file.
 
     ```css
     /* .blazor-themes a.<your-theme-name>:before {
-        background: <your-theme-color>;
+        background: <theme-main-color>;
     }*/
     ```
 
-3. *For a Bootstrap theme.* Delete the *wwwroot/css/themes/\<your-theme-name\>* folder.
+3. *For an external Bootstrap theme.* Delete the *wwwroot/css/themes/\<your-theme-name\>* folder.
 
 ## Files to Review
 
