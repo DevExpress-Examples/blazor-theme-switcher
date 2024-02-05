@@ -5,7 +5,8 @@
 <!-- default badges end -->
 # How to implement a Theme Switcher in Blazor applications
 
-This example demonstrates how you can add a Theme Switcher to your application. The switcher in this example is the same as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/). It allows users to switch between [DevExpress built-in themes](https://docs.devexpress.com/Blazor/401523/common-concepts/customize-appearance/themes) and external Bootstrap themes (the default theme and [free Bootswatch options](https://bootswatch.com/)).
+This example demonstrates how to add a Theme Switcher to your application. The switcher in this example is the same as in [DevExpress Blazor Demos](https://demos.devexpress.com/blazor/). It allows users to switch between [DevExpress built-in themes](https://docs.devexpress.com/Blazor/401523/common-concepts/customize-appearance/themes) and external Bootstrap themes (the default theme and [free Bootswatch options](https://bootswatch.com/)).
+
 
 ![Blazor - Theme Switcher](images/blazor-theme-switcher.png)
 
@@ -79,7 +80,8 @@ Follow the steps below to add an external Bootstrap theme to the Theme Switcher:
     }
     ```
 
-4. In *ThemeService.cs*, add the theme name to **Bootstrap Themes** theme set:
+4. In *ThemeService.cs*, add the theme name to the **Bootstrap Themes** theme set:
+
 
     ```cs
     private static List<ThemeSet> CreateSets(ThemeService config) {
