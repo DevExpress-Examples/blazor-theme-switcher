@@ -32,7 +32,8 @@ Follow the steps below to add a Theme Switcher into your application:
     Contains CSS rules used to draw colored squares for each theme in the Theme Switcher.
     * **css/theme-switcher.css**  
     Contains CSS rules that define the Theme Switcher's appearance and behavior.
-    * **theme-controler.js**  
+    * **theme-controller.js**  
+
     Contains functions that add and remove links to theme stylesheets.
     * **theme.svg**  
     An icon displayed in the Theme Switcher.
