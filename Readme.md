@@ -26,7 +26,7 @@ Follow the steps below to add a Theme Switcher into your application:
 3. Copy this example's [switcher-resources](./CS/switcher/switcher/wwwroot/switcher-resources) folder to your application's *wwwroot* folder. The *switcher-resources* folder has the following structure:
 
     * **css/themes**  
-    Includes nested folders whose names correspond to external Bootstrap themes. Each nested folder stores an external theme's stylesheet (the *bootstrap.min.css* file). Note that built-in DevExpress themes are added to the application with DevExpress Blazor components and stored separately in the **DevExpress.Blazor.Themes** NuGet package.
+    Includes nested folders whose names correspond to external Bootstrap themes. Each nested folder stores an external theme's stylesheet (*bootstrap.min.css*). Note that built-in DevExpress themes are added to the application with DevExpress Blazor components and stored separately in the **DevExpress.Blazor.Themes** NuGet package.
 
     * **css/themes.css**  
     Contains CSS rules used to draw colored squares for each theme in the Theme Switcher.
@@ -69,7 +69,7 @@ Follow the steps below to add an external Bootstrap theme to the Theme Switcher:
 
 1. In the **wwwroot/css/themes** folder, create a new folder for this theme. The folder and theme names should match.
 
-2. Add the theme's stylesheet (the *bootstrap.min.css* file) to the newly created folder.
+2. Add the theme's stylesheet (*bootstrap.min.css*) to the newly created folder.
 
 3. Add the following CSS rule to the *wwwroot/css/themes.css* file:
 
@@ -79,7 +79,7 @@ Follow the steps below to add an external Bootstrap theme to the Theme Switcher:
     }
     ```
 
-4. In the *ThemeService.cs* file, add the theme name to **Bootstrap Themes** theme set:
+4. In *ThemeService.cs*, add the theme name to **Bootstrap Themes** theme set:
 
     ```cs
     private static List<ThemeSet> CreateSets(ThemeService config) {
@@ -94,7 +94,7 @@ Follow the steps below to add an external Bootstrap theme to the Theme Switcher:
 
 Follow the steps below to remove a built-in DevExpress or external Bootstrap theme from the Theme Switcher:
 
-1. Open the *ThemeService.cs* file and remove the theme name from the **DevExpress Themes** or **Bootstrap Themes** theme set:
+1. Open *ThemeService.cs* and remove the theme name from the **DevExpress Themes** or **Bootstrap Themes** theme set:
 
     ```cs
     private static List<ThemeSet> CreateSets(ThemeService config) {
