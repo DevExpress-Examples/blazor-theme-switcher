@@ -40,6 +40,9 @@ Follow the steps below to add a Theme Switcher into your application:
 
 4. In the layout file, use the [HttpContextAccessor](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor?view=aspnetcore-8.0) class to obtain the current theme from cookies:
     ```html
+    @using Microsoft.AspNetCore.Mvc.ViewFeatures
+    @inject IFileVersionProvider FileVersionProvider
+    @inject ThemeService Themes
     @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
     @{
         var InitialThemeName = HttpContextAccessor.HttpContext.Request.Cookies["ActiveTheme"];
@@ -47,19 +50,21 @@ Follow the steps below to add a Theme Switcher into your application:
         var bsTheme = Themes.GetBootstrapThemeCssUrl(Themes.ActiveTheme);
         var dxTheme = Themes.GetThemeCssUrl(Themes.ActiveTheme);
         var hlTheme = Themes.GetHighlightJSThemeCssUrl(Themes.ActiveTheme);
+
+        string AppendVersion(string path) => FileVersionProvider.AddFileVersionToPath("/", path);
     }
     ```
 5. In the `head` section of the layout file, replace a link to a theme stylesheet with the following code:
     ```html
     <head>
        @if (!string.IsNullOrEmpty(bsTheme)) {
-            <link rel="stylesheet" href="@bsTheme" asp-append-version="true" bs-theme-link />
+            <link rel="stylesheet" href="@AppendVersion(bsTheme)" bs-theme-link />
         }
         @if (!string.IsNullOrEmpty(dxTheme)) {
-            <link rel="stylesheet" href="@dxTheme" asp-append-version="true" dx-theme-link />
+            <link rel="stylesheet" href="@AppendVersion(dxTheme)" dx-theme-link />
         }
         @if (!string.IsNullOrEmpty(hlTheme)) {
-            <link rel="stylesheet" href="@hlTheme" asp-append-version="true" hl-theme-link />
+            <link rel="stylesheet" href="@hlTheme" hl-theme-link />
         }
     </head>
     ```
@@ -78,8 +83,9 @@ Follow the steps below to add a Theme Switcher into your application:
         @* ... *@
     </body>
     ```
-8. Register the `ThemeService` in the `Program.cs` file:
+8. Register `Mvc` and `ThemeService` in the `Program.cs` file:
     ```cs
+    builder.Services.AddMvc();
     builder.Services.AddScoped<ThemeService>();
     ```
 9. Declare the Theme Switcher component in the *MainLayout.razor* file:    
