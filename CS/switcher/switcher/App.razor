@@ -1,11 +1,33 @@
-﻿@inject ThemeService Themes
+﻿@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@inject IFileVersionProvider FileVersionProvider
+@inject ThemeService Themes
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    var InitialThemeName = HttpContextAccessor.HttpContext.Request.Cookies["ActiveTheme"];
+    Themes.SetActiveThemeByName(InitialThemeName);
+    var bsTheme = Themes.GetBootstrapThemeCssUrl(Themes.ActiveTheme);
+    var dxTheme = Themes.GetThemeCssUrl(Themes.ActiveTheme);
+    var hlTheme = Themes.GetHighlightJSThemeCssUrl(Themes.ActiveTheme);
+
+    string AppendVersion(string path) => FileVersionProvider.AddFileVersionToPath("/", path);
+}
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
-    <link href="_content/DevExpress.Blazor.Themes/blazing-berry.bs5.css" rel="stylesheet" asp-append-version="true" />
+    @if (!string.IsNullOrEmpty(bsTheme)) {
+        <link rel="stylesheet" href="@AppendVersion(bsTheme)" bs-theme-link />
+    }
+    @if (!string.IsNullOrEmpty(dxTheme)) {
+        <link rel="stylesheet" href="@AppendVersion(dxTheme)" dx-theme-link />
+    }
+    @if (!string.IsNullOrEmpty(hlTheme)) {
+        <link rel="stylesheet" href="@hlTheme" hl-theme-link />
+    }
 
     @DxResourceManager.RegisterScripts()
     <link href="css/site.css" rel="stylesheet" />
