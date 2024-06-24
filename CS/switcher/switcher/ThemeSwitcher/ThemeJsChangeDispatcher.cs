@@ -32,6 +32,7 @@ public class ThemeJsChangeDispatcher : ComponentBase, IThemeChangeRequestDispatc
         if(_pendingTheme == theme) return;
         _pendingTheme = theme;
         await _module.InvokeVoidAsync("ThemeController.setStylesheetLinks",
+            theme.Name,
             Themes.GetBootstrapThemeCssUrl(theme),
             theme.BootstrapThemeMode,
             Themes.GetThemeCssUrl(theme),

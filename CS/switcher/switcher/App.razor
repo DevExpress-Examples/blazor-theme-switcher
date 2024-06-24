@@ -1,11 +1,29 @@
 ﻿@inject ThemeService Themes
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    var InitialThemeName = HttpContextAccessor.HttpContext.Request.Cookies["ActiveTheme"];
+    Themes.SetActiveThemeByName(InitialThemeName);
+    var bsTheme = Themes.GetBootstrapThemeCssUrl(Themes.ActiveTheme);
+    var dxTheme = Themes.GetThemeCssUrl(Themes.ActiveTheme);
+    var hlTheme = Themes.GetHighlightJSThemeCssUrl(Themes.ActiveTheme);
+}
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
-    <link href="_content/DevExpress.Blazor.Themes/blazing-berry.bs5.css" rel="stylesheet" asp-append-version="true" />
+    @if (!string.IsNullOrEmpty(bsTheme)) {
+        <link rel="stylesheet" href="@bsTheme" asp-append-version="true" bs-theme-link />
+    }
+    @if (!string.IsNullOrEmpty(dxTheme)) {
+        <link rel="stylesheet" href="@dxTheme" asp-append-version="true" dx-theme-link />
+    }
+    @if (!string.IsNullOrEmpty(hlTheme)) {
+        <link rel="stylesheet" href="@hlTheme" asp-append-version="true" hl-theme-link />
+    }
 
     @DxResourceManager.RegisterScripts()
     <link href="css/site.css" rel="stylesheet" />

@@ -52,7 +52,7 @@ export const ThemeController = (function () {
         return links.filter(l => l.href !== url);
     }
 
-    async function setStylesheetLinks(bsUrl, bsThemeMode, dxUrl, hlUrl, reference) {
+    async function setStylesheetLinks(theme, bsUrl, bsThemeMode, dxUrl, hlUrl, reference) {
         abortController?.abort();
         abortController = new AbortController();
         const signal = abortController.signal;
@@ -71,6 +71,7 @@ export const ThemeController = (function () {
         }
 
         document.querySelector("HTML").setAttribute("data-bs-theme", bsThemeMode);
+        document.cookie = `ActiveTheme=${theme};path=/`;
 
         await reference.invokeMethodAsync("ThemeLoadedAsync");
     }

@@ -38,7 +38,32 @@ Follow the steps below to add a Theme Switcher into your application:
     * **theme.svg**  
     An icon displayed in the Theme Switcher.
 
-4. Register the Theme Switcher's styles in the `head` section of the layout file:
+4. In the layout file, use the [HttpContextAccessor](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpcontextaccessor?view=aspnetcore-8.0) class to obtain the current theme from cookies:
+    ```html
+    @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+    @{
+        var InitialThemeName = HttpContextAccessor.HttpContext.Request.Cookies["ActiveTheme"];
+        Themes.SetActiveThemeByName(InitialThemeName);
+        var bsTheme = Themes.GetBootstrapThemeCssUrl(Themes.ActiveTheme);
+        var dxTheme = Themes.GetThemeCssUrl(Themes.ActiveTheme);
+        var hlTheme = Themes.GetHighlightJSThemeCssUrl(Themes.ActiveTheme);
+    }
+    ```
+5. In the `head` section of the layout file, replace a link to a theme stylesheet with the following code:
+    ```html
+    <head>
+       @if (!string.IsNullOrEmpty(bsTheme)) {
+            <link rel="stylesheet" href="@bsTheme" asp-append-version="true" bs-theme-link />
+        }
+        @if (!string.IsNullOrEmpty(dxTheme)) {
+            <link rel="stylesheet" href="@dxTheme" asp-append-version="true" dx-theme-link />
+        }
+        @if (!string.IsNullOrEmpty(hlTheme)) {
+            <link rel="stylesheet" href="@hlTheme" asp-append-version="true" hl-theme-link />
+        }
+    </head>
+    ```
+6. Register the Theme Switcher's styles in the `head` section of the layout file:
     ```html
     <head>
        <link href="switcher-resources/css/theme-switcher.css" rel="stylesheet" />
@@ -46,22 +71,22 @@ Follow the steps below to add a Theme Switcher into your application:
        @* ... *@
     </head>
     ```
-5. Add the following `div` element to the `body` section of the layout file:
+7. Add the following `div` element to the `body` section of the layout file:
     ```html
     <body>
        <div id="switcher-container" data-permanent></div>
         @* ... *@
     </body>
     ```
-6. Register the `ThemeService` in the `Program.cs` file:
+8. Register the `ThemeService` in the `Program.cs` file:
     ```cs
     builder.Services.AddScoped<ThemeService>();
     ```
-7. Declare the Theme Switcher component in the *MainLayout.razor* file:    
+9. Declare the Theme Switcher component in the *MainLayout.razor* file:    
     ```razor
     <ThemeSwitcher />
     ``` 
-8. *For .NET 6 and .NET 7 applications.* Remove the `@rendermode InteractiveServer` directive from [ThemeSwitcher.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcher.razor#L2), [ThemeSwitcherContainer.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherContainer.razor#L4), and [ThemeSwitcherItem.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherItem.razor#L2) files. 
+10. *For .NET 6 and .NET 7 applications.* Remove the `@rendermode InteractiveServer` directive from [ThemeSwitcher.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcher.razor#L2), [ThemeSwitcherContainer.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherContainer.razor#L4), and [ThemeSwitcherItem.razor](./CS/switcher/switcher/ThemeSwitcher/ThemeSwitcherItem.razor#L2) files. 
 
 ## Add Themes to the Theme Switcher
 
