@@ -117,7 +117,7 @@ Follow the steps below to add an external Bootstrap theme to the Theme Switcher:
     ```cs
     private static List<ThemeSet> CreateSets(ThemeService config) {
         return new List<ThemeSet>() {
-            new ThemeSet("DevExpress Themes", "blazing-berry", "blazing-dark", "purple", "office-white"),
+            new ThemeSet("DevExpress Themes", NEW_BLAZOR_THEMES),
             new ThemeSet("Bootstrap Themes", "<your-theme-name>", "default", "default-dark", "cerulean")
         };
     }
@@ -132,7 +132,7 @@ Follow the steps below to remove a built-in DevExpress or external Bootstrap the
     ```cs
     private static List<ThemeSet> CreateSets(ThemeService config) {
         return new List<ThemeSet>() {
-            new ThemeSet("DevExpress Themes", "blazing-berry", "blazing-dark", "purple", "office-white"),
+            new ThemeSet("DevExpress Themes", NEW_BLAZOR_THEMES),
             new ThemeSet("Bootstrap Themes", /*"<your-theme-name>"*/, "default", "default-dark", "cerulean")
         };
     }
