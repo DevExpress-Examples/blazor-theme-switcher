@@ -1,5 +1,3 @@
-using DevExpress.Blazor.Internal;
-
 namespace switcher.ThemeSwitcher {
     public interface IThemeChangeRequestDispatcher {
         void RequestThemeChange(Theme theme);
@@ -32,7 +30,7 @@ namespace switcher.ThemeSwitcher {
         }
 
         public string GetThemeCssUrl(Theme theme) {
-            if (NEW_BLAZOR_THEMES.IndexOf(theme.Name) > -1)
+            if (Array.IndexOf(NEW_BLAZOR_THEMES, theme.Name) > -1)
                 return $"_content/DevExpress.Blazor.Themes/{theme.Name}.bs5.min.css";
             return $"_content/DevExpress.Blazor.Themes/bootstrap-external.bs5.min.css";
         }
