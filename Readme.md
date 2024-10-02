@@ -46,7 +46,7 @@ Follow the steps below to add a Theme Switcher into your application:
     @inject ThemeService Themes
     @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
     @{
-        var InitialThemeName = HttpContextAccessor.HttpContext.Request.Cookies["ActiveTheme"];
+        string? InitialThemeName = HttpContextAccessor.HttpContext?.Request.Cookies["ActiveTheme"];
         Themes.SetActiveThemeByName(InitialThemeName);
         var bsTheme = Themes.GetBootstrapThemeCssUrl(Themes.ActiveTheme);
         var dxTheme = Themes.GetThemeCssUrl(Themes.ActiveTheme);
