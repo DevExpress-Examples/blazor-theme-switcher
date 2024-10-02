@@ -1,8 +1,4 @@
-using System.Linq;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System;
+using DevExpress.Blazor.Internal;
 
 namespace switcher.ThemeSwitcher {
     public interface IThemeChangeRequestDispatcher {
@@ -14,77 +10,47 @@ namespace switcher.ThemeSwitcher {
     }
 
     public class ThemeService {
-        public static bool EnableNewBlazorThemes = true;
-        readonly Dictionary<string, string> newBlazorThemesMapping = new() {
-            ["blazing-berry"] = "blazing-berry.bs5",
-            ["blazing-dark"] = "blazing-dark.bs5",
-            ["office-white"] = "office-white.bs5",
-            ["purple"] = "purple.bs5",
-        };
-        private Theme _activeTheme;
-
-        const string DefaultThemeName = "blazing-berry";
-        readonly Dictionary<string, string> HighlightJSThemes = new Dictionary<string, string>() {
-            { DefaultThemeName, "default" },
+        static readonly string DEFAULT_THEME_NAME = "blazing-berry";
+        static readonly string[] NEW_BLAZOR_THEMES = [DEFAULT_THEME_NAME, "blazing-dark", "purple", "office-white"];
+        static readonly Dictionary<string, string> HIGHLIGHT_JS_THEME = new() {
+            { DEFAULT_THEME_NAME, "default" },
             { "blazing-dark", "androidstudio" },
             { "cyborg", "androidstudio" },
             { "default-dark", "androidstudio" }
         };
 
-        public IThemeChangeRequestDispatcher ThemeChangeRequestDispatcher { get; set; }
-
-        public IThemeLoadNotifier ThemeLoadNotifier { get; set; }
+        readonly Theme defaultTheme;
+        public Theme ActiveTheme { get; private set;  }
+        public List<ThemeSet> ThemeSets { get; }
+        public IThemeChangeRequestDispatcher? ThemeChangeRequestDispatcher { get; set; }
+        public IThemeLoadNotifier? ThemeLoadNotifier { get; set; }
 
         public ThemeService() {
-            ResourcesReadyState = new ConcurrentDictionary<string, TaskCompletionSource<bool>>();
             ThemeSets = CreateSets(this);
-        }
 
-        public ConcurrentDictionary<string, TaskCompletionSource<bool>> ResourcesReadyState { get; }
-        public List<ThemeSet> ThemeSets { get; }
-        public Theme ActiveTheme => _activeTheme;
-        public Theme DefaultTheme {
-            get { return ThemeSets.SelectMany(ts => ts.Themes).FirstOrDefault(t => t.Name == DefaultThemeName); }
+            ActiveTheme = defaultTheme = FindThemeByName(DEFAULT_THEME_NAME)!;
         }
 
         public string GetThemeCssUrl(Theme theme) {
-            if(EnableNewBlazorThemes) {
-                if (this.newBlazorThemesMapping.ContainsKey(theme.Name))
-                    return $"_content/DevExpress.Blazor.Themes/{this.newBlazorThemesMapping.GetValueOrDefault(theme.Name)}.min.css";
-                return $"_content/DevExpress.Blazor.Themes/bootstrap-external.bs5.min.css";
-            }
-            return GetBootstrapThemeCssUrl(theme);
+            if (NEW_BLAZOR_THEMES.IndexOf(theme.Name) > -1)
+                return $"_content/DevExpress.Blazor.Themes/{theme.Name}.bs5.min.css";
+            return $"_content/DevExpress.Blazor.Themes/bootstrap-external.bs5.min.css";
         }
-        public string GetBootstrapThemeCssUrl(Theme theme) {
-            if(!EnableNewBlazorThemes || theme.IsBootstrapNative) {
-                return $"switcher-resources/css/themes/{theme.ThemePath}/bootstrap.min.css";
-            }
-            return null;
-        }
-        public string GetActiveThemeCssUrl() {
-            return GetThemeCssUrl(ActiveTheme);
-        }
-        public string GetActiveBootstrapThemeCssUrl() {
-            return GetBootstrapThemeCssUrl(ActiveTheme);
+        public string? GetBootstrapThemeCssUrl(Theme theme) {
+            return theme.IsBootstrapNative ?
+                $"switcher-resources/css/themes/{theme.ThemePath}/bootstrap.min.css" : null;
         }
         public string GetHighlightJSThemeCssUrl(Theme theme) {
-            var highlightjsTheme = HighlightJSThemes[DefaultThemeName];
-            if(HighlightJSThemes.ContainsKey(theme.Name))
-                highlightjsTheme = HighlightJSThemes[theme.Name];
+            var highlightjsTheme = HIGHLIGHT_JS_THEME[DEFAULT_THEME_NAME];
+            if(HIGHLIGHT_JS_THEME.ContainsKey(theme.Name))
+                highlightjsTheme = HIGHLIGHT_JS_THEME[theme.Name];
             return $"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/{highlightjsTheme}.min.css";
         }
-        public string GetActiveHighlightJSThemeCssUrl() {
-            return GetHighlightJSThemeCssUrl(ActiveTheme);
+        public void SetActiveThemeByName(string? themeName) {
+            ActiveTheme = FindThemeByName(themeName) ?? defaultTheme;
         }
 
-        public void SetActiveThemeByName(string themeName) {
-            var theme = FindThemeByName(themeName);
-            if(theme != null)
-                _activeTheme = theme;
-            else
-                _activeTheme = DefaultTheme;
-        }
-        private Theme FindThemeByName(string themeName) {
+        private Theme? FindThemeByName(string? themeName) {
             var themes = ThemeSets.SelectMany(ts => ts.Themes);
             foreach(var theme in themes) {
                 if(theme.Name == themeName)
@@ -95,7 +61,7 @@ namespace switcher.ThemeSwitcher {
 
         private static List<ThemeSet> CreateSets(ThemeService config) {
             return new List<ThemeSet>() {
-                new ThemeSet("DevExpress Themes", "blazing-berry", "blazing-dark", "purple", "office-white"),
+                new ThemeSet("DevExpress Themes", NEW_BLAZOR_THEMES),
                 new ThemeSet("Bootstrap Themes", "default", "default-dark", "cerulean", "cyborg", "flatly", "journal", "litera", "lumen", "lux", "pulse", "simplex", "solar", "superhero", "united", "yeti")
             };
         }
