@@ -6,14 +6,14 @@ namespace switcher.ThemeSwitcher;
 
 public class ThemeJsChangeDispatcher : ComponentBase, IThemeChangeRequestDispatcher, IAsyncDisposable {
     [Parameter]
-    public string InitialThemeName { get; set; }
+    public required string InitialThemeName { get; set; }
     [Inject]
-    private ISafeJSRuntime JsRuntime { get; set; }
+    private ISafeJSRuntime? JsRuntime { get; set; }
     [Inject]
-    private ThemeService Themes { get; set; }
+    private ThemeService Themes { get; set; } = new ThemeService();
 
-    private Theme _pendingTheme;
-    private IJSObjectReference _module;
+    private Theme? _pendingTheme;
+    private IJSObjectReference? _module;
 
     protected override void OnInitialized() {
         base.OnInitialized();
@@ -24,25 +24,27 @@ public class ThemeJsChangeDispatcher : ComponentBase, IThemeChangeRequestDispatc
 
     protected override async Task OnAfterRenderAsync(bool firstRender) {
         await base.OnAfterRenderAsync(firstRender);
-        if(firstRender)
+        if(firstRender && JsRuntime != null)
             _module = await JsRuntime.InvokeAsync<IJSObjectReference>("import", "./switcher-resources/theme-controller.js");
     }
 
     public async void RequestThemeChange(Theme theme) {
         if(_pendingTheme == theme) return;
         _pendingTheme = theme;
-        await _module.InvokeVoidAsync("ThemeController.setStylesheetLinks",
-            theme.Name,
-            Themes.GetBootstrapThemeCssUrl(theme),
-            theme.BootstrapThemeMode,
-            Themes.GetThemeCssUrl(theme),
-            Themes.GetHighlightJSThemeCssUrl(theme),
-            DotNetObjectReference.Create(this));
+
+        if (_module != null)
+            await _module.InvokeVoidAsync("ThemeController.setStylesheetLinks",
+                theme.Name,
+                Themes.GetBootstrapThemeCssUrl(theme),
+                theme.BootstrapThemeMode,
+                Themes.GetThemeCssUrl(theme),
+                Themes.GetHighlightJSThemeCssUrl(theme),
+                DotNetObjectReference.Create(this));
     }
 
     [JSInvokable]
     public async Task ThemeLoadedAsync() {
-        if(Themes.ThemeLoadNotifier != null) {
+        if(Themes.ThemeLoadNotifier != null && _pendingTheme != null) {
             await Themes.ThemeLoadNotifier.NotifyThemeLoadedAsync(_pendingTheme);
         }
         _pendingTheme = null;
