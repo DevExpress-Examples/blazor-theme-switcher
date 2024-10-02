@@ -10,7 +10,7 @@ namespace switcher.ThemeSwitcher {
     }
 
     public class ThemeService {
-        static readonly string DEFAULT_THEME_NAME = "blazing-berry";
+        public static readonly string DEFAULT_THEME_NAME = "blazing-berry";
         static readonly string[] NEW_BLAZOR_THEMES = [DEFAULT_THEME_NAME, "blazing-dark", "purple", "office-white"];
         static readonly Dictionary<string, string> HIGHLIGHT_JS_THEME = new() {
             { DEFAULT_THEME_NAME, "default" },
